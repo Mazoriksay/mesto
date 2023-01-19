@@ -1,0 +1,15 @@
+.profile {
+    padding-top: 40px;
+    max-width: 68.75vw;
+    margin: auto;
+    display: flex;   
+}
+
+@media screen and (max-width: 950px) {
+    .profile {
+        display: block;
+        max-width: 282px;
+        padding-top: 42px;
+    }
+    
+}

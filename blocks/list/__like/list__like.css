@@ -1,0 +1,7 @@
+.list__like {
+    margin-right: 20px;
+}
+
+.list__like:hover {
+    opacity: 0.5;
+}
