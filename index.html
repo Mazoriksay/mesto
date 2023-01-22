@@ -16,10 +16,10 @@
                 <img src="images/profile__avatar.png" class="profile__avatar" alt="Аватар">
                 <div class="profile__info">
                     <h1 class="profile__name">Жак-Ив Кусто</h1>
-                    <img src="images/logo/profile__edit.svg" class="profile__edit" alt="Кнопка редактирования"> 
+                    <button class="profile__edit"><img src="images/logo/profile__edit.svg" alt="Кнопка редактирования"></button>
                     <h2 class="profile__about">Исследователь океана</h2>
                 </div>
-                <div class="profile__add"></div>
+                <button class="profile__add"></button>
             </section>
             <section class="gallery">
                 <ul class="list">
@@ -27,56 +27,56 @@
                         <img src="images/list__image1.png" class="list__image" alt="Карачаевск">
                         <div class="list__container">
                             <p class="list__text">Карачаевск</p>
-                            <img src="images/list__like.svg" class="list__like" alt="Лайк">
+                            <button class="list__like list__like_type_inactive">
                         </div>
                     </li>
                     <li class="list__card">
                         <img src="images/list__image2.png" class="list__image" alt="Гора Эльбрус">
                         <div class="list__container">
                             <p class="list__text">Гора Эльбрус</p>
-                            <img src="images/list__like.svg" class="list__like" alt="Лайк">
+                            <button class="list__like list__like_type_inactive">
                         </div>
                     </li>
                     <li class="list__card">
                         <img src="images/list__image3.png" class="list__image" alt="Домбай">
                         <div class="list__container">
                             <p class="list__text">Домбай</p>
-                            <img src="images/list__like.svg" class="list__like" alt="Лайк">
+                            <button class="list__like list__like_type_inactive">
                         </div>
                     </li>
                     <li class="list__card">
                         <img src="images/list__image2.png" class="list__image" alt="Гора Эльбрус">
                         <div class="list__container">
                             <p class="list__text">Гора Эльбрус</p>
-                            <img src="images/list__like.svg" class="list__like" alt="Лайк">
+                            <button class="list__like list__like_type_inactive">
                         </div>
                     </li>
                     <li class="list__card">
                         <img src="images/list__image3.png" class="list__image" alt="Домбай">
                         <div class="list__container">
                             <p class="list__text">Домбай</p>
-                            <img src="images/list__like.svg" class="list__like" alt="Лайк">
+                            <button class="list__like list__like_type_inactive">
                         </div>
                     </li>
                     <li class="list__card">
                         <img src="images/list__image1.png" class="list__image" alt="Карачаевск">
                         <div class="list__container">
                             <p class="list__text">Карачаево-Черкессия</p>
-                            <img src="images/list__like.svg" class="list__like" alt="Лайк">
+                            <button class="list__like list__like_type_inactive">
                         </div>
                     </li>
                 </ul>
             </section>
-            <section class="popup">
+            <section class="popup popup_status_close">
                 <div class="popup__form-container">
                 <button class="popup__button-close"></button>
                 <div class="popup__container">
                     <h2 class="popup__text">Редактировать профиль</h2>
                     <form method="get">
-                        <input class="popup__input" type="text" name="name">
-                        <input class="popup__input" type="text" name="job">
+                        <input id="name" class="popup__input" type="text">
+                        <input id="about" class="popup__input" type="text">
+                        <input id="form" class="popup__button-save" type="submit" value="Отправить">
                     </form>
-                    <button class="popup__button-save"><span class="popup__text-save">Сохранить</span></button>
                 </div>
             </section>
         </main>
@@ -84,5 +84,6 @@
             <p class="footer__copyright">© 2020 Mesto Russia</p>
         </footer>
     </div>
+<script src="script.js"></script>
 </body>
 </html>
