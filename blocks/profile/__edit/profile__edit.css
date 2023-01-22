@@ -2,6 +2,11 @@
     width: 24px;
     height: 24px;
     align-self: end;
+    background-color: transparent;
+    background-repeat: no-repeat;
+    border: none;
+    cursor: pointer;
+    outline: none;
 }
 
 .profile__edit:hover {

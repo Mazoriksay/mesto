@@ -4,6 +4,11 @@
     background-image: url('../../../images/logo/profile__add1.svg');
     align-self: center;
     margin-left: auto;
+    background-color: transparent;
+    background-repeat: no-repeat;
+    border: none;
+    cursor: pointer;
+    outline: none;
 }
 
 .profile__add:hover {
