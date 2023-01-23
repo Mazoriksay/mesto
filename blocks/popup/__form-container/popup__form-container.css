@@ -1,18 +1,17 @@
 .popup__form-container {
     width: 510px;
-    height: 370px;
+    min-height: 410px;
+    position: fixed;
     display: flex;
     flex-direction: column;
-    position: fixed;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
 }
-
+    
 @media screen and (max-width: 900px) {
     .popup__form-container {
         width: 282px;
-        height: 358px;
-    }
-    
+        min-height: 394px;
+    } 
 }

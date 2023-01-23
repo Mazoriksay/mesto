@@ -1,4 +1,5 @@
 .list__image {
+   object-fit: contain;
    width: 282px;
    max-height: 282px;
    border-radius: 10px 10px 0 0;

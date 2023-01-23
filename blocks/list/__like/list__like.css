@@ -2,6 +2,7 @@
     margin-right: 20px;
     width: 22px;
     height: 19px;
+    background-image: url('../../../images/list__like.svg');
     background-size: cover;
     background-color: transparent;
     background-repeat: no-repeat;
