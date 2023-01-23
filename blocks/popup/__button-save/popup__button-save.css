@@ -1,5 +1,6 @@
 .popup__button-save {
     width: 358px;
+    border: none;
     height: 50px;
     display: block;
     margin: auto;

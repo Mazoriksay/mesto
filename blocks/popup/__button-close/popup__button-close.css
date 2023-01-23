@@ -3,6 +3,9 @@
     height: 32px;
     background-image: url('../../../images/popup__button-close.svg');
     background-size: cover;
+    position: absolute;
+    top: 0;
+    right: 0;
     padding: 0;
     align-self: end;
     background-color: transparent;
