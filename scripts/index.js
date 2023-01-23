@@ -1,11 +1,11 @@
 function popupActive() {
     let popup = document.querySelector('.popup');
-    popup.classList.remove('popup_status_close');
+    popup.classList.add('popup_opened');
 }
 
 function popupClose() {
     let popup = document.querySelector('.popup');
-    popup.classList.add('popup_status_close');
+    popup.classList.remove('popup_opened');
 }
 
 let editButton = document.querySelector('.profile__edit');
