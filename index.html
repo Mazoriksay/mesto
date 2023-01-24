@@ -74,15 +74,12 @@
         <section class="popup">
             <div class="popup__form-container">
                 <button class="popup__button-close" type="button"></button>
-                <!-- почему это лишняя обертка? как я должен закрасить белым нужную мне часть? и как мне разместить кнопку закрытия? -->
-                <div class="popup__container">
-                    <h2 class="popup__text">Редактировать профиль</h2>
-                    <form class="popup__form" method="get" name="profileForm">
-                        <input id="name" class="popup__input" type="text" name="userName" placeholder="Ваше имя">
-                        <input id="about" class="popup__input" type="text" name="userAbout" placeholder="Чем вы занимаетесь">
-                        <input class="popup__button-save" type="submit" value="Сохранить">
-                    </form>
-                </div>
+                <h2 class="popup__text">Редактировать профиль</h2>
+                <form class="popup__form" method="get" name="profile-form">
+                    <input id="name" class="popup__input" type="text" name="user-name" placeholder="Ваше имя">
+                    <input id="about" class="popup__input" type="text" name="user-about" placeholder="Чем вы занимаетесь">
+                    <input class="popup__button-save" type="submit" value="Сохранить">
+                </form>
             </div>
         </section>
     </div>

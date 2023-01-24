@@ -4,10 +4,9 @@
     background-image: url('../../../images/popup__button-close.svg');
     background-size: cover;
     position: absolute;
-    top: 0;
-    right: 0;
+    top: -38px;
+    right: -38px;
     padding: 0;
-    align-self: end;
     background-color: transparent;
     background-repeat: no-repeat;
     border: none;
@@ -23,7 +22,7 @@
     .popup__button-close {
         width: 20px;
         height: 20px;
-        margin-bottom: 16px;
+        top: -36px;
+        right: 0;
     }
-    
 }
