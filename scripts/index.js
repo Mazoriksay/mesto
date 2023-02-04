@@ -58,7 +58,6 @@ const initialCards = [
 
 const cardsContainer = document.querySelector('.list');
 const cardTemplate = document.querySelector('#card-template').content;
-const cardElement = cardTemplate.querySelector('.list__card').cloneNode(true);
 for (i=0; i < initialCards.length; i++) {
     const cardElement = cardTemplate.querySelector('.list__card').cloneNode(true);
     const cardImage = cardElement.querySelector('.list__image');
