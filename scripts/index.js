@@ -28,3 +28,43 @@ function handleFormSubmit(evt) {
     popupClose()
 }
 formElement.addEventListener('submit', handleFormSubmit);
+
+const initialCards = [
+    {
+      name: 'Архыз',
+      link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg'
+    },
+    {
+      name: 'Челябинская область',
+      link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg'
+    },
+    {
+      name: 'Иваново',
+      link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg'
+    },
+    {
+      name: 'Камчатка',
+      link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg'
+    },
+    {
+      name: 'Холмогорский район',
+      link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kholmogorsky-rayon.jpg'
+    },
+    {
+      name: 'Байкал',
+      link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
+    }
+  ]; 
+
+const cardsContainer = document.querySelector('.list');
+const cardTemplate = document.querySelector('#card-template').content;
+const cardElement = cardTemplate.querySelector('.list__card').cloneNode(true);
+for (i=0; i < initialCards.length; i++) {
+    const cardElement = cardTemplate.querySelector('.list__card').cloneNode(true);
+    const cardImage = cardElement.querySelector('.list__image');
+    const cardText = cardElement.querySelector('.list__text');
+    cardImage.setAttribute('src', initialCards[i].link);
+    cardImage.setAttribute('alt', initialCards[i].name);
+    cardText.textContent = initialCards[i].name;
+    cardsContainer.append(cardElement);
+}

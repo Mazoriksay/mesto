@@ -23,48 +23,6 @@
             </section>
             <section class="gallery">
                 <ul class="list">
-                    <li class="list__card">
-                        <img src="images/list__image1.png" class="list__image" alt="Карачаевск">
-                        <div class="list__container">
-                            <h2 class="list__text">Карачаевск</h2>
-                            <button class="list__like" type="button"></button>
-                        </div>
-                    </li>
-                    <li class="list__card">
-                        <img src="images/list__image2.png" class="list__image" alt="Гора Эльбрус">
-                        <div class="list__container">
-                            <h2 class="list__text">Гора Эльбрус</h2>
-                            <button class="list__like" type="button"></button>
-                        </div>
-                    </li>
-                    <li class="list__card">
-                        <img src="images/list__image3.png" class="list__image" alt="Домбай">
-                        <div class="list__container">
-                            <h2 class="list__text">Домбай</h2>
-                            <button class="list__like" type="button"></button>
-                        </div>
-                    </li>
-                    <li class="list__card">
-                        <img src="images/list__image2.png" class="list__image" alt="Гора Эльбрус">
-                        <div class="list__container">
-                            <h2 class="list__text">Гора Эльбрус</h2>
-                            <button class="list__like" type="button"></button>
-                        </div>
-                    </li>
-                    <li class="list__card">
-                        <img src="images/list__image3.png" class="list__image" alt="Домбай">
-                        <div class="list__container">
-                            <h2 class="list__text">Домбай</h2>
-                            <button class="list__like" type="button"></button>
-                        </div>
-                    </li>
-                    <li class="list__card">
-                        <img src="images/list__image1.png" class="list__image" alt="Карачаевск">
-                        <div class="list__container">
-                            <h2 class="list__text">Карачаево-Черкессия</h2>
-                            <button class="list__like" type="button"></button>
-                        </div>
-                    </li>
                 </ul>
             </section>
         </main>
@@ -83,6 +41,15 @@
             </div>
         </section>
     </div>
-<script src="scripts/index.js"></script>
+    <template id="card-template">
+            <li class="list__card">
+                <img class="list__image">
+                <div class="list__container">
+                    <h2 class="list__text"></h2>
+                    <button class="list__like" type="button"></button>
+                </div>
+            </li>
+    </template>
+    <script src="scripts/index.js"></script>
 </body>
 </html>
