@@ -65,6 +65,9 @@ for (i=0; i < initialCards.length; i++) {
     cardImage.setAttribute('src', initialCards[i].link);
     cardImage.setAttribute('alt', initialCards[i].name);
     cardText.textContent = initialCards[i].name;
+    cardElement.querySelector('.list__like').addEventListener('click', function (evt) { 
+      evt.target.classList.toggle('list__like_active');
+    });
     cardsContainer.append(cardElement);
 }
 
@@ -96,6 +99,9 @@ function handleCardFormSubmit(evt) {
     cardImage.setAttribute('src', linkInput.value);
     cardImage.setAttribute('alt', placeInput.value);
     cardText.textContent = `${placeInput.value}`;
+    cardElement.querySelector('.list__like').addEventListener('click', function (evt) { 
+      evt.target.classList.toggle('list__like_active');
+    });
     cardsContainer.prepend(cardElement);
     popupCardClose()
 }
