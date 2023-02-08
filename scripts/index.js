@@ -1,5 +1,5 @@
 const popupEditProfile = document.querySelector('#popup-edit');
-const buttonEdit = document.querySelector('.profile__edit');
+const buttonEditProfile = document.querySelector('.profile__edit');
 const buttonEditClose = popupEditProfile.querySelector('.popup__button-close');
 const formEditElement = popupEditProfile.querySelector('.popup__form');
 const nameInput = document.querySelector('#name');
@@ -25,7 +25,7 @@ function closePopup(popup) {
   popup.classList.remove('popup_opened');
 }
 
-function insertingData() {
+function enterData() {
     nameInput.setAttribute('value', nameProfile.textContent);
     aboutInput.setAttribute('value', aboutProfile.textContent);
 }
@@ -37,46 +37,52 @@ function handleEditFormSubmit(evt) {
   closePopup(popupEditProfile);
 }
 
-function createCard(card, image, text) {
-  card.querySelector('.list__like').addEventListener('click', function (evt) { 
+function createCard(el = 'null') {
+  const cardElement = cardTemplate.querySelector('.list__card').cloneNode(true);
+  const cardImage = cardElement.querySelector('.list__image');
+  const cardText = cardElement.querySelector('.list__text');
+  
+  if (el === initialCards[i]) {
+    cardImage.setAttribute('src', el.link); 
+    cardImage.setAttribute('alt', el.name); 
+    cardText.textContent = el.name; 
+  }
+  else {
+    cardImage.setAttribute('src', linkInput.value);
+    cardImage.setAttribute('alt', placeInput.value);
+    cardText.textContent = `${placeInput.value}`;
+  }
+
+  cardElement.querySelector('.list__like').addEventListener('click', function (evt) { 
     evt.target.classList.toggle('list__like_active');
   });
   
-  card.querySelector('.list__remove').addEventListener('click', function () {
-    card.remove();
+  cardElement.querySelector('.list__remove').addEventListener('click', function () {
+    cardElement.remove();
   });
 
-  card.querySelector('.list__button-image').addEventListener('click', function () {
+  cardElement.querySelector('.list__button-image').addEventListener('click', function () {
     const popupImage = popupPhoto.querySelector('.photo__image');
     const popupText = popupPhoto.querySelector('.photo__text');
 
     openPopup(popupPhoto);
     
-    popupImage.setAttribute('src', image.getAttribute('src'));
-    popupImage.setAttribute('alt', image.getAttribute('alt'));
-    popupText.textContent = text.textContent;
+    popupImage.setAttribute('src', cardImage.getAttribute('src'));
+    popupImage.setAttribute('alt', cardImage.getAttribute('alt'));
+    popupText.textContent = cardText.textContent;
   });
+  
+  return cardElement;
 }
 
 function handleCardFormSubmit(evt) {
   evt.preventDefault();
-  const cardElement = cardTemplate.querySelector('.list__card').cloneNode(true);
-  const cardImage = cardElement.querySelector('.list__image');
-  const cardText = cardElement.querySelector('.list__text');
-  
-  cardImage.setAttribute('src', linkInput.value);
-  cardImage.setAttribute('alt', placeInput.value);
-  cardText.textContent = `${placeInput.value}`;
- 
-  createCard(cardElement, cardImage, cardText);
-  
-  cardsContainer.prepend(cardElement);
-  
+  cardsContainer.prepend(createCard());
   closePopup(popupCard);
 }
 
-buttonEdit.addEventListener('click', () => openPopup(popupEditProfile));
-buttonEdit.addEventListener('click', insertingData);
+buttonEditProfile.addEventListener('click', () => openPopup(popupEditProfile));
+buttonEditProfile.addEventListener('click', enterData);
 buttonEditClose.addEventListener('click', () => closePopup(popupEditProfile));
 formEditElement.addEventListener('submit', handleEditFormSubmit);
 
@@ -88,15 +94,5 @@ buttonClosePhoto.addEventListener('click', () => closePopup(popupPhoto));
 
 
 for (i=0; i < initialCards.length; i++) {
-  const cardElement = cardTemplate.querySelector('.list__card').cloneNode(true);
-  const cardImage = cardElement.querySelector('.list__image');
-  const cardText = cardElement.querySelector('.list__text');
-
-  cardImage.setAttribute('src', initialCards[i].link);
-  cardImage.setAttribute('alt', initialCards[i].name);
-  cardText.textContent = initialCards[i].name;
-  
-  createCard(cardElement, cardImage, cardText);
-  
-  cardsContainer.append(cardElement);
+  cardsContainer.append(createCard(initialCards[i]));
 }
