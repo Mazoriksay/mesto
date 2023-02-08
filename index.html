@@ -34,8 +34,8 @@
                 <button class="popup__button-close" type="button"></button>
                 <h2 class="popup__text">Редактировать профиль</h2>
                 <form class="popup__form" method="get" name="profile-form">
-                    <input id="name" class="popup__input" type="text" name="user-name" placeholder="Ваше имя">
-                    <input id="about" class="popup__input" type="text" name="user-about" placeholder="Чем вы занимаетесь">
+                    <input id="name" class="popup__input" type="text" name="user-name" placeholder="Ваше имя" required="true">
+                    <input id="about" class="popup__input" type="text" name="user-about" placeholder="Чем вы занимаетесь" required="true">
                     <input class="popup__button-save" type="submit" value="Сохранить">
                 </form>
             </div>
@@ -45,16 +45,16 @@
                 <button class="popup__button-close" type="button"></button>
                 <h2 class="popup__text">Новое Место</h2>
                 <form class="popup__form" method="get" name="profile-form">
-                    <input id="place" class="popup__input" type="text" name="place" placeholder="Название">
-                    <input id="link" class="popup__input" type="text" name="link" placeholder="Ссылка на картинку">
-                    <input class="popup__button-save" type="submit" value="Создать">
+                    <input id="place" class="popup__input" type="text" name="place" placeholder="Название" required="true">
+                    <input id="link" class="popup__input" type="text" name="link" placeholder="Ссылка на картинку" required="true" type="url">
+                    <input class="popup__button-save" type="submit" value="Создать"> 
                 </form>
             </div>
         </section>
         <section class="photo">
            <div class="photo__container">
                 <button class="photo__button-close" type="button"></button>
-                <img class="photo__image" src="." alt=".">
+                <img class="photo__image" src="#" alt=".">
                 <p class="photo__text"></p>
            </div>
         </section>
@@ -62,13 +62,14 @@
     <template id="card-template">
             <li class="list__card">
                 <button class="list__remove" type="button"></button>
-                <button class="list__button-image" type="button"><img class="list__image" src="." alt="."></button>
+                <button class="list__button-image" type="button"><img class="list__image" src="#" alt="."></button>
                 <div class="list__container">
                     <h2 class="list__text"></h2>
                     <button class="list__like" type="button"></button>
                 </div>
             </li>
     </template>
+    <script src="scripts/cards.js"></script>
     <script src="scripts/index.js"></script>
 </body>
 </html>
