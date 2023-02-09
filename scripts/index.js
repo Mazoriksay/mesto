@@ -15,6 +15,8 @@ const placeInput = document.querySelector('#place');
 const linkInput = document.querySelector('#link');
 const formAddElement = popupCard.querySelector('.popup__form');
 const popupPhoto = document.querySelector('.photo');
+const popupImage = popupPhoto.querySelector('.photo__image');
+const popupText = popupPhoto.querySelector('.photo__text');
 const buttonClosePhoto = document.querySelector('.photo__button-close');
 
 function openPopup(popup) {
@@ -37,22 +39,15 @@ function handleEditFormSubmit(evt) {
   closePopup(popupEditProfile);
 }
 
-function createCard(el = 'null') {
+function createCard(data) {
   const cardElement = cardTemplate.querySelector('.list__card').cloneNode(true);
   const cardImage = cardElement.querySelector('.list__image');
   const cardText = cardElement.querySelector('.list__text');
   
-  if (el === initialCards[i]) {
-    cardImage.setAttribute('src', el.link); 
-    cardImage.setAttribute('alt', el.name); 
-    cardText.textContent = el.name; 
-  }
-  else {
-    cardImage.setAttribute('src', linkInput.value);
-    cardImage.setAttribute('alt', placeInput.value);
-    cardText.textContent = `${placeInput.value}`;
-  }
-
+  cardImage.setAttribute('src', data.link); 
+  cardImage.setAttribute('alt', data.name); 
+  cardText.textContent = data.name; 
+  
   cardElement.querySelector('.list__like').addEventListener('click', function (evt) { 
     evt.target.classList.toggle('list__like_active');
   });
@@ -62,9 +57,6 @@ function createCard(el = 'null') {
   });
 
   cardElement.querySelector('.list__button-image').addEventListener('click', function () {
-    const popupImage = popupPhoto.querySelector('.photo__image');
-    const popupText = popupPhoto.querySelector('.photo__text');
-
     openPopup(popupPhoto);
     
     popupImage.setAttribute('src', cardImage.getAttribute('src'));
@@ -77,7 +69,10 @@ function createCard(el = 'null') {
 
 function handleCardFormSubmit(evt) {
   evt.preventDefault();
-  cardsContainer.prepend(createCard());
+  cardsContainer.prepend(createCard({
+    name: placeInput.value,
+    link: linkInput.value
+  }));
   closePopup(popupCard);
 }
 
