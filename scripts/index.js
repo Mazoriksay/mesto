@@ -103,7 +103,7 @@ function setEventListeners(formElement) {
   const buttonElement = formElement.querySelector('.popup__button-save');
 
   toggleButtonState(inputList, buttonElement);
-
+  
   inputList.forEach((inputElement) => {
     inputElement.addEventListener('input', () => {
       checkInputValidity(formElement, inputElement);
@@ -124,7 +124,9 @@ function enableValidation() {
 
 function hasInvalidInput(inputList) {
   return inputList.some((inputElement) => {
-    return !inputElement.validity.valid;
+    if (inputElement.value.length < 2) {
+      return !inputElement.validity.valid;
+    }
   });
 }
 
@@ -136,11 +138,31 @@ function toggleButtonState(inputList, buttonElement) {
   }
 }
 
+function closePopupOverlay(evt) {
+  if (evt.target.classList.contains('popup') || evt.target.classList.contains('photo')) {
+    closePopup(document.querySelector('.popup_opened'));
+  }
+}
+
+function closePopupEscape(evt) {
+  if (evt.key === 'Escape') {
+    closePopup(document.querySelector('.popup_opened'))
+  }
+}
+
 buttonEditProfile.addEventListener('click', () => openPopup(popupEditProfile));
 buttonEditProfile.addEventListener('click', enterData);
 buttonEditClose.addEventListener('click', () => closePopup(popupEditProfile));
 formEditElement.addEventListener('submit', handleEditFormSubmit);
 buttonEditProfile.addEventListener('click', enableValidation);
+
+popupEditProfile.addEventListener('click', closePopupOverlay);
+popupCard.addEventListener('click', closePopupOverlay);
+popupPhoto.addEventListener('click', closePopupOverlay);
+
+document.addEventListener('keydown', closePopupEscape);
+document.addEventListener('keydown', closePopupEscape);
+document.addEventListener('keydown', closePopupEscape);
 
 buttonAdd.addEventListener('click', () => openPopup(popupCard));
 buttonAdd.addEventListener('click', enableValidation);
@@ -153,4 +175,3 @@ buttonClosePhoto.addEventListener('click', () => closePopup(popupPhoto));
 for (i=0; i < initialCards.length; i++) {
   cardsContainer.append(createCard(initialCards[i]));
 }
-
