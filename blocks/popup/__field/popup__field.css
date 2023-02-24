@@ -1,5 +1,5 @@
 .popup__field {
-    width: 358px;
+    max-width: 358px;
     min-height: 44px;
     margin: auto;
     position: relative;
@@ -12,3 +12,9 @@
     margin-bottom: 31px;
 }
 
+@media screen and (max-width: 900px) {
+    .popup__field {
+        max-width: 238px;
+    }
+    
+}

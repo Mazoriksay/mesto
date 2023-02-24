@@ -93,9 +93,9 @@ buttonEditProfile.addEventListener('click', enterData);
 buttonEditClose.addEventListener('click', () => closePopup(popupEditProfile));
 formEditElement.addEventListener('submit', handleEditFormSubmit);
 
-popupEditProfile.addEventListener('click', closePopupOverlay);
-popupCard.addEventListener('click', closePopupOverlay);
-popupPhoto.addEventListener('click', closePopupOverlay);
+popupEditProfile.addEventListener('mousedown', closePopupOverlay);
+popupCard.addEventListener('mousedown', closePopupOverlay);
+popupPhoto.addEventListener('mousedown', closePopupOverlay);
 
 document.addEventListener('keydown', closePopupEscape);
 document.addEventListener('keydown', closePopupEscape);
