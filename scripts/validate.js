@@ -23,9 +23,9 @@ function checkInputValidity(formElement, inputElement, el) {
 function setEventListeners(el, formElement) {
     const inputList = Array.from(formElement.querySelectorAll(el.inputSelector));
     const buttonElement = formElement.querySelector(el.submitButtonSelector);
-  
-    toggleButtonState(inputList, buttonElement, el);
     
+    toggleButtonState(inputList, buttonElement, el);
+
     inputList.forEach((inputElement) => {
         inputElement.addEventListener('input', () => {
             checkInputValidity(formElement, inputElement, el);
@@ -68,3 +68,4 @@ const classValid = {
 };
 
 enableValidation(classValid);
+buttonAdd.addEventListener("click", () => enableValidation(classValid));

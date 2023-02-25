@@ -21,15 +21,17 @@ const buttonClosePhoto = document.querySelector('.photo__button-close');
 
 function openPopup(popup) {
   popup.classList.add('popup_opened');
+  document.addEventListener('keydown', closePopupEscape);
 }
 
 function closePopup(popup) {
   popup.classList.remove('popup_opened');
+  document.removeEventListener('keydown', closePopupEscape);
 }
 
 function enterData() {
-    nameInput.setAttribute('value', nameProfile.textContent);
-    aboutInput.setAttribute('value', aboutProfile.textContent);
+    nameInput.value = nameProfile.textContent;
+    aboutInput.value = aboutProfile.textContent;
 }
 
 function handleEditFormSubmit(evt) {
@@ -44,7 +46,7 @@ function createCard(data) {
   const cardImage = cardElement.querySelector('.list__image');
   const cardText = cardElement.querySelector('.list__text');
   
-  cardImage.setAttribute('src', data.link); 
+  if (data.link.startsWith('http')) cardImage.setAttribute('src', data.link); 
   cardImage.setAttribute('alt', data.name); 
   cardText.textContent = data.name; 
   
@@ -57,13 +59,14 @@ function createCard(data) {
   });
 
   cardElement.querySelector('.list__button-image').addEventListener('click', function () {
-    openPopup(popupPhoto);
-    
     popupImage.setAttribute('src', cardImage.getAttribute('src'));
     popupImage.setAttribute('alt', cardImage.getAttribute('alt'));
     popupText.textContent = cardText.textContent;
+    
+    openPopup(popupPhoto);
   });
-  
+  placeInput.value = "";
+  linkInput.value = "";
   return cardElement;
 }
 
@@ -97,17 +100,12 @@ popupEditProfile.addEventListener('mousedown', closePopupOverlay);
 popupCard.addEventListener('mousedown', closePopupOverlay);
 popupPhoto.addEventListener('mousedown', closePopupOverlay);
 
-document.addEventListener('keydown', closePopupEscape);
-document.addEventListener('keydown', closePopupEscape);
-document.addEventListener('keydown', closePopupEscape);
-
 buttonAdd.addEventListener('click', () => openPopup(popupCard));
 buttonCloseCard.addEventListener('click', () => closePopup(popupCard));
 formAddElement.addEventListener('submit', handleCardFormSubmit);
 
 buttonClosePhoto.addEventListener('click', () => closePopup(popupPhoto));
 
-
-for (i=0; i < initialCards.length; i++) {
-  cardsContainer.append(createCard(initialCards[i]));
-}
+initialCards.forEach((card) => {
+  cardsContainer.append(createCard(card));
+});
