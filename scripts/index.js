@@ -1,10 +1,8 @@
-import { Card, initialCards } from './card.js';
-import { FormValidate, classValid} from './validate.js';
-export {popupPhoto, openPopup};
+import { Card } from './Card.js';
+import { FormValidate } from './Validate.js';
 
 const popupEditProfile = document.querySelector('#popup-edit');
 const buttonEditProfile = document.querySelector('.profile__edit');
-const buttonEditClose = popupEditProfile.querySelector('.popup__button-close');
 const formEditElement = popupEditProfile.querySelector('.popup__form');
 const nameInput = document.querySelector('#name-input');
 const aboutInput = document.querySelector('#about-input');
@@ -13,12 +11,51 @@ const aboutProfile = document.querySelector('.profile__about');
 const cardsContainer = document.querySelector('.list');
 const popupCard = document.querySelector('#popup-card');
 const buttonAdd = document.querySelector('.profile__add');
-const buttonCloseCard = popupCard.querySelector('.popup__button-close');
 const placeInput = document.querySelector('#place-input');
 const linkInput = document.querySelector('#link-input');
 const formAddElement = popupCard.querySelector('.popup__form');
 const popupPhoto = document.querySelector('.photo');
-const buttonClosePhoto = document.querySelector('.photo__button-close');
+const popupImage = popupPhoto.querySelector('.popup__image');
+const popupImageCaption = popupPhoto.querySelector('.popup__photo-text');
+const buttonCloseList = document.querySelectorAll('.popup__button-close');
+
+
+const classValid = {
+  formSelector: '.popup__form',
+  inputSelector: '.popup__input',
+  submitButtonSelector: '.popup__button-save',
+  inactiveButtonClass: 'popup__button-save_inactive',
+  inputErrorClass: 'popup__input_type_error',
+  errorClass: 'popup__input-error_active'
+};
+
+const initialCards = [
+  {
+    name: 'Архыз',
+    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg'
+  },
+  {
+    name: 'Челябинская область',
+    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg'
+  },
+  {
+    name: 'Иваново',
+    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg'
+  },
+  {
+    name: 'Камчатка',
+    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg'
+  },
+  {
+    name: 'Холмогорский район',
+    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kholmogorsky-rayon.jpg'
+  },
+  {
+    name: 'Байкал',
+    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
+  }
+];
+
 
 function openPopup(popup) {
   popup.classList.add('popup_opened');
@@ -33,10 +70,24 @@ function closePopup(popup) {
 function enterData() {
     nameInput.value = nameProfile.textContent;
     aboutInput.value = aboutProfile.textContent;
+    profileForm.resetValidation();
+}
+
+function removeInput() {
+  document.querySelector('#place-input').value = "";
+  document.querySelector('#link-input').value = "";
+}
+
+function createCard() {
+  return new Card({
+    name: placeInput.value,
+    link: linkInput.value
+  }, '#card-template');
 }
 
 function handleEditFormSubmit(evt) {
   evt.preventDefault();
+  if (evt.key = "Enter") return false;
   nameProfile.textContent = `${nameInput.value}`;
   aboutProfile.textContent = `${aboutInput.value}`;
   closePopup(popupEditProfile);
@@ -44,51 +95,62 @@ function handleEditFormSubmit(evt) {
 
 function handleCardFormSubmit(evt) {
   evt.preventDefault();
-  const card = new Card({
-    name: placeInput.value,
-    link: linkInput.value
-  }, '#card-template');
+  if (evt.key = "Enter") return false;
+  const card = createCard();
   const cardElement = card.generateCard();
   cardsContainer.prepend(cardElement);
   closePopup(popupCard);
 }
 
+function handleOpenPopup(name, link) {
+  popupImage.src = link;
+  popupImage.alt = link;
+  popupImageCaption.textContent = name;
+  openPopup(popupPhoto);
+}
+
 function closePopupOverlay(evt) {
-  if (evt.target.classList.contains('popup') || evt.target.classList.contains('photo')) {
-    closePopup(document.querySelector('.popup_opened'));
+  if (evt.target.classList.contains('popup')) {
+    closePopup(evt.target);
   }
 }
 
 function closePopupEscape(evt) {
   if (evt.key === 'Escape') {
-    closePopup(document.querySelector('.popup_opened'))
+    closePopup(document.querySelector('.popup_opened'));
   }
 }
 
-buttonEditProfile.addEventListener('click', () => openPopup(popupEditProfile));
-buttonEditProfile.addEventListener('click', enterData);
-buttonEditClose.addEventListener('click', () => closePopup(popupEditProfile));
+buttonEditProfile.addEventListener('click', () => {
+  openPopup(popupEditProfile)
+  enterData()
+});
+
 formEditElement.addEventListener('submit', handleEditFormSubmit);
+formAddElement.addEventListener('submit', handleCardFormSubmit);
 
 popupEditProfile.addEventListener('mousedown', closePopupOverlay);
 popupCard.addEventListener('mousedown', closePopupOverlay);
 popupPhoto.addEventListener('mousedown', closePopupOverlay);
 
 buttonAdd.addEventListener('click', () => openPopup(popupCard));
-buttonCloseCard.addEventListener('click', () => closePopup(popupCard));
-formAddElement.addEventListener('submit', handleCardFormSubmit);
+buttonAdd.addEventListener('click', removeInput);
+buttonAdd.addEventListener('click',  () => cardForm.resetValidation());
 
-buttonClosePhoto.addEventListener('click', () => closePopup(popupPhoto));
+buttonCloseList.forEach(btn =>{
+  const popup = btn.closest('.popup');
+  btn.addEventListener('click', () => closePopup(popup));
+});
 
-initialCards.forEach((item) => {
-  const card = new Card(item, '#card-template');
+initialCards.forEach(item => {
+  const card = new Card(item, '#card-template', handleOpenPopup);
   const cardElement = card.generateCard();
 
   cardsContainer.append(cardElement);
 });
 
-const profileForm = new FormValidate(classValid, '#profile-form');
+const profileForm = new FormValidate(classValid, document.querySelector('#profile-form'));
 profileForm.enableValidation();
 
-const cardForm = new FormValidate(classValid, '#card-form')
-buttonAdd.addEventListener("click", () => cardForm.enableValidation());
+const cardForm = new FormValidate(classValid, document.querySelector('#card-form'));
+cardForm.enableValidation();
