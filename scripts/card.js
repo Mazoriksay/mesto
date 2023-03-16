@@ -1,3 +1,6 @@
+import {popupPhoto, openPopup} from "./index.js";
+export {initialCards, Card};
+
 const initialCards = [
     {
       name: 'Архыз',
@@ -56,9 +59,9 @@ class Card {
   }
 
   _setAttributes() {
-    popupImage.setAttribute('src', this._link);
-    popupImage.setAttribute('alt', this._name);
-    popupText.textContent = this._name;
+    document.querySelector('.photo__image').setAttribute('src', this._link);
+    document.querySelector('.photo__image').setAttribute('alt', this._name);
+    document.querySelector('.photo__text').textContent = this._name;
     openPopup(popupPhoto);
   }
 
@@ -71,10 +74,3 @@ class Card {
       this._setAttributes());
   }
 }
-initialCards.forEach((item) => {
-  const card = new Card(item, '#card-template');
-  const cardElement = card.generateCard();
-
-  document.querySelector('.list').append(cardElement);
-});
-
