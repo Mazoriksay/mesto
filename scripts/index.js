@@ -74,8 +74,8 @@ function enterData() {
 }
 
 function removeInput() {
-  document.querySelector('#place-input').value = "";
-  document.querySelector('#link-input').value = "";
+  placeInput.value = "";
+  linkInput.value = "";
 }
 
 function createCard() {
@@ -87,15 +87,20 @@ function createCard() {
 
 function handleEditFormSubmit(evt) {
   evt.preventDefault();
-  if (evt.key = "Enter") return false;
   nameProfile.textContent = `${nameInput.value}`;
   aboutProfile.textContent = `${aboutInput.value}`;
   closePopup(popupEditProfile);
 }
 
+function banEnter(evt) {
+  if (evt.key === "Enter") {
+    evt.preventDefault()
+    return false;
+  }
+}
+
 function handleCardFormSubmit(evt) {
   evt.preventDefault();
-  if (evt.key = "Enter") return false;
   const card = createCard();
   const cardElement = card.generateCard();
   cardsContainer.prepend(cardElement);
@@ -127,7 +132,11 @@ buttonEditProfile.addEventListener('click', () => {
 });
 
 formEditElement.addEventListener('submit', handleEditFormSubmit);
+formEditElement.addEventListener('keydown', banEnter);
+
 formAddElement.addEventListener('submit', handleCardFormSubmit);
+formAddElement.addEventListener('keydown',  banEnter);
+
 
 popupEditProfile.addEventListener('mousedown', closePopupOverlay);
 popupCard.addEventListener('mousedown', closePopupOverlay);
