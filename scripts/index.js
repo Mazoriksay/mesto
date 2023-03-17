@@ -73,17 +73,16 @@ function enterData() {
     profileForm.resetValidation();
 }
 
-function removeInput() {
-  placeInput.value = "";
-  linkInput.value = "";
+function createCard(data) {
+  const card =  new Card(data, '#card-template', handleOpenPopup);
+  const cardElement = card.generateCard();
+  return cardElement;
 }
 
-function createCard() {
-  return new Card({
-    name: placeInput.value,
-    link: linkInput.value
-  }, '#card-template');
-}
+function removeInput() { 
+  placeInput.value = ""; 
+  linkInput.value = ""; 
+} 
 
 function handleEditFormSubmit(evt) {
   evt.preventDefault();
@@ -92,24 +91,20 @@ function handleEditFormSubmit(evt) {
   closePopup(popupEditProfile);
 }
 
-function banEnter(evt) {
-  if (evt.key === "Enter") {
-    evt.preventDefault()
-    return false;
-  }
-}
-
 function handleCardFormSubmit(evt) {
   evt.preventDefault();
-  const card = createCard();
-  const cardElement = card.generateCard();
+  const cardElement = createCard({
+    name: placeInput.value,
+    link: linkInput.value
+  });
   cardsContainer.prepend(cardElement);
   closePopup(popupCard);
+  removeInput();
 }
 
 function handleOpenPopup(name, link) {
   popupImage.src = link;
-  popupImage.alt = link;
+  popupImage.alt = name;
   popupImageCaption.textContent = name;
   openPopup(popupPhoto);
 }
@@ -132,18 +127,13 @@ buttonEditProfile.addEventListener('click', () => {
 });
 
 formEditElement.addEventListener('submit', handleEditFormSubmit);
-formEditElement.addEventListener('keydown', banEnter);
-
 formAddElement.addEventListener('submit', handleCardFormSubmit);
-formAddElement.addEventListener('keydown',  banEnter);
-
 
 popupEditProfile.addEventListener('mousedown', closePopupOverlay);
 popupCard.addEventListener('mousedown', closePopupOverlay);
 popupPhoto.addEventListener('mousedown', closePopupOverlay);
 
 buttonAdd.addEventListener('click', () => openPopup(popupCard));
-buttonAdd.addEventListener('click', removeInput);
 buttonAdd.addEventListener('click',  () => cardForm.resetValidation());
 
 buttonCloseList.forEach(btn =>{
@@ -152,8 +142,7 @@ buttonCloseList.forEach(btn =>{
 });
 
 initialCards.forEach(item => {
-  const card = new Card(item, '#card-template', handleOpenPopup);
-  const cardElement = card.generateCard();
+  const cardElement = createCard(item, '#card-template', handleOpenPopup)
 
   cardsContainer.append(cardElement);
 });

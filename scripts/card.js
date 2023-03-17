@@ -19,7 +19,7 @@ class Card {
   }
   
   _toggleLike() {
-    this._element.querySelector('.list__like').classList.toggle('list__like_active');
+    this._likeButton.classList.toggle('list__like_active');
   }
 
   _removeCard() {
@@ -37,7 +37,7 @@ class Card {
     
     this._cardImage.src = this._link;
     this._cardImage.alt = this._name;
-   this._cardTitle.textContent = this._name;
+    this._cardTitle.textContent = this._name;
 
     return this._element;
   }

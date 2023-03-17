@@ -33,7 +33,7 @@
             <div class="popup__form-container">
                 <button class="popup__button-close" type="button"></button>
                 <h2 class="popup__text">Редактировать профиль</h2>
-                <form class="popup__form" method="get" name="profile-form" id="profile-form" novalidate>
+                <form class="popup__form" method="get" name="profile-form" id="profile-form" novalidate onkeypress="return event.keyCode != 13;">
                     <label class="popup__field"> 
                         <input id="name-input" class="popup__input" type="text" name="user-name" placeholder="Ваше имя" required="true" minlength="2" maxlength="40">
                         <span class="popup__input-error name-input-error"></span>
@@ -50,7 +50,7 @@
             <div class="popup__form-container">
                 <button class="popup__button-close" type="button"></button>
                 <h2 class="popup__text">Новое Место</h2>
-                <form class="popup__form" method="get" name="card-form" id="card-form" novalidate>
+                <form class="popup__form" method="get" name="card-form" id="card-form" novalidate onkeypress="return event.keyCode != 13;">
                     <label class="popup__field">
                         <input id="place-input" class="popup__input" type="text" name="place" placeholder="Название" required="true" minlength="2" maxlength="30">
                         <span class="popup__input-error place-input-error"></span>
@@ -74,7 +74,7 @@
     <template id="card-template">
             <li class="list__card">
                 <button class="list__remove" type="button"></button>
-                <button class="list__button-image" type="button"><img class="list__image" src="https://нт.элитсад.рф/assets/components/project/app/img/empty.png" alt="."></button>
+                <button class="list__button-image" type="button"><img class="list__image" src="#" alt="."></button>
                 <div class="list__container">
                     <h2 class="list__text"></h2>
                     <button class="list__like" type="button"></button>
