@@ -1,5 +1,5 @@
 import { Card } from './Card.js';
-import { FormValidate } from './Validate.js';
+import { FormValidate } from './FormValidate.js';
 
 const popupEditProfile = document.querySelector('#popup-edit');
 const buttonEditProfile = document.querySelector('.profile__edit');
@@ -99,7 +99,7 @@ function handleCardFormSubmit(evt) {
   });
   cardsContainer.prepend(cardElement);
   closePopup(popupCard);
-  removeInput();
+  formAddElement.reset();
 }
 
 function handleOpenPopup(name, link) {
@@ -129,15 +129,12 @@ buttonEditProfile.addEventListener('click', () => {
 formEditElement.addEventListener('submit', handleEditFormSubmit);
 formAddElement.addEventListener('submit', handleCardFormSubmit);
 
-popupEditProfile.addEventListener('mousedown', closePopupOverlay);
-popupCard.addEventListener('mousedown', closePopupOverlay);
-popupPhoto.addEventListener('mousedown', closePopupOverlay);
-
 buttonAdd.addEventListener('click', () => openPopup(popupCard));
 buttonAdd.addEventListener('click',  () => cardForm.resetValidation());
 
 buttonCloseList.forEach(btn =>{
   const popup = btn.closest('.popup');
+  popup.addEventListener('mousedown', closePopupOverlay);
   btn.addEventListener('click', () => closePopup(popup));
 });
 
