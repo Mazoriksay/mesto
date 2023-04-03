@@ -1,10 +1,10 @@
-import Card from './components/Card.js';
-import FormValidate from './components/FormValidate.js';
-import Section from './components/Section.js';
-import PopupWithForm from './components/PopupWithForm.js';
-import PopupWithImage from './components/PopupWithImage.js';
-import UserInfo from './components/UserInfo.js';
-import './styles/index.css';
+import Card from '../components/Card.js';
+import FormValidate from '../components/FormValidate.js';
+import Section from '../components/Section.js';
+import PopupWithForm from '../components/PopupWithForm.js';
+import PopupWithImage from '../components/PopupWithImage.js';
+import UserInfo from '../components/UserInfo.js';
+import './index.css';
 import {
   buttonEditProfile,
   buttonAdd,
@@ -13,7 +13,7 @@ import {
   cardsContainerSelector,
   classValid,
   initialCards
-} from './utils/constants.js';
+} from '../utils/constants.js';
 
 const userInfo = new UserInfo('.profile__name', '.profile__about');
 
@@ -39,12 +39,16 @@ buttonEditProfile.addEventListener('click', () => {
 const popupPhoto =  new PopupWithImage('.photo');
 popupPhoto.setEventListeners();
 
+function createCard(item) {
+  const card = new Card(item, '#card-template', popupPhoto.open);
+  const cardElement = card.generateCard();
+  return cardElement;
+}
+
 const cardList = new Section({ 
     items: initialCards, 
     renderer: (item) => {
-      const card = new Card(item, '#card-template', popupPhoto.open);
-      const cardElement = card.generateCard();
-      cardList.addItem(cardElement);
+      cardList.addItem(createCard(item));
     }
   }, 
   cardsContainerSelector
@@ -75,7 +79,7 @@ popupCard.setEventListeners();
 
 buttonAdd.addEventListener('click', () => {
   popupCard.open()
-  cardForm.resetValidation;
+  cardForm.resetValidation();
 });
 
 const profileForm = new FormValidate(classValid, document.querySelector('#profile-form'));
