@@ -7,9 +7,6 @@ export const aboutInput = document.querySelector('#about-input');
 export const placeInput = document.querySelector('#place-input');
 export const linkInput = document.querySelector('#link-input');
 
-export const nameProfile = document.querySelector('.profile__name');
-export const aboutProfile = document.querySelector('.profile__about');
-
 export const cardsContainerSelector = '.list';
 
 export const classValid = {

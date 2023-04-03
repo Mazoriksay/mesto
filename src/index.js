@@ -1,20 +1,19 @@
-import Card from '../components/Card.js';
-import FormValidate from '../components/FormValidate.js';
-import Section from '../components/Section.js';
-import PopupWithForm from '../components/PopupWithForm.js';
-import PopupWithImage from '../components/PopupWithImage.js';
-import UserInfo from '../components/UserInfo.js';
+import Card from './components/Card.js';
+import FormValidate from './components/FormValidate.js';
+import Section from './components/Section.js';
+import PopupWithForm from './components/PopupWithForm.js';
+import PopupWithImage from './components/PopupWithImage.js';
+import UserInfo from './components/UserInfo.js';
+import './styles/index.css';
 import {
   buttonEditProfile,
   buttonAdd,
   nameInput,
   aboutInput,
-  nameProfile,
-  aboutProfile,
   cardsContainerSelector,
   classValid,
   initialCards
-} from '../utils/constants.js';
+} from './utils/constants.js';
 
 const userInfo = new UserInfo('.profile__name', '.profile__about');
 
