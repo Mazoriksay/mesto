@@ -2,18 +2,18 @@
 <html lang="ru">
 <head>
   <meta charset="UTF-8">
-  <link rel="stylesheet" href="pages/index.css">
+  <link rel="stylesheet" href="src/pages/index.css">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Mesto</title>
 </head>
 <body class="body">
     <div class="page">
         <header class="header">
-            <a href="#"><img src="images/logo/header__logo.svg" class="header__logo" alt="Логотип Место"></a>
+            <a href="#"><img src="src/images/logo/header__logo.svg" class="header__logo" alt="Логотип Место"></a>
         </header>
         <main class="content">
             <section class="profile">
-                <img src="images/profile__avatar.png" class="profile__avatar" alt="Аватар">
+                <img src="src/images/profile__avatar.png" class="profile__avatar" alt="Аватар">
                 <div class="profile__info">
                     <h1 class="profile__name">Жак-Ив Кусто</h1>
                     <button class="profile__edit" type="button"></button>
@@ -35,11 +35,11 @@
                 <h2 class="popup__text">Редактировать профиль</h2>
                 <form class="popup__form" method="get" name="profile-form" id="profile-form" novalidate onkeypress="return event.keyCode != 13;">
                     <label class="popup__field"> 
-                        <input id="name-input" class="popup__input" type="text" name="user-name" placeholder="Ваше имя" required="true" minlength="2" maxlength="40">
+                        <input id="name-input" class="popup__input" type="text" name="name" placeholder="Ваше имя" required="true" minlength="2" maxlength="40">
                         <span class="popup__input-error name-input-error"></span>
                     </label>
                     <label class="popup__field">
-                        <input id="about-input" class="popup__input" type="text" name="user-about" placeholder="Чем вы занимаетесь" required="true" minlength="2" maxlength="200">
+                        <input id="about-input" class="popup__input" type="text" name="about" placeholder="Чем вы занимаетесь" required="true" minlength="2" maxlength="200">
                         <span class="popup__input-error about-input-error"></span>
                     </label>
                     <input class="popup__button-save" type="submit" value="Сохранить">

@@ -1,13 +1,5 @@
-export const popupEditProfile = document.querySelector('#popup-edit');
-export const popupCard = document.querySelector('#popup-card');
-export const popupPhoto = document.querySelector('.photo');
-
 export const buttonEditProfile = document.querySelector('.profile__edit');
 export const buttonAdd = document.querySelector('.profile__add');
-export const buttonCloseList = document.querySelectorAll('.popup__button-close');
-
-export const formEditElement = popupEditProfile.querySelector('.popup__form');
-export const formAddElement = popupCard.querySelector('.popup__form');
 
 export const nameInput = document.querySelector('#name-input');
 export const aboutInput = document.querySelector('#about-input');
@@ -19,10 +11,6 @@ export const nameProfile = document.querySelector('.profile__name');
 export const aboutProfile = document.querySelector('.profile__about');
 
 export const cardsContainerSelector = '.list';
-export const cardsContainer = document.querySelector('.list');
-
-export const popupImage = popupPhoto.querySelector('.popup__image');
-export const popupImageCaption = popupPhoto.querySelector('.popup__photo-text');
 
 export const classValid = {
   formSelector: '.popup__form',
