@@ -92,11 +92,11 @@ function createCard(item) {
       })
       .catch((err) => console.log(err));
   },
-  handleUnsetLike: (likeCounter) => {
+  handleUnsetLike: (likeCounter, likes) => {
     deleteLikeCount(item._id)
       .then((res) => {
-        item.likes = res.likes;
-        likeCounter.textContent = item.likes.length;
+        likes = res.likes;
+        likeCounter.textContent = likes.length;
         card.unsetLikeButtonActive();
       })
       .catch((err) => console.log(err));
