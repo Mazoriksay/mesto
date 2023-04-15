@@ -1,9 +1,9 @@
 .profile {
-    padding-top: 40px;
     width: 68.75vw;
+    position: relative;
     max-width: 880px;
     margin: auto;
-    display: flex;   
+    display: flex;
 }
 
 @media screen and (max-width: 950px) {

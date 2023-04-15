@@ -1,5 +1,12 @@
 export const buttonEditProfile = document.querySelector('.profile__edit');
 export const buttonAdd = document.querySelector('.profile__add');
+export const buttonAvatar = document.querySelector('.profile__avatar-button');
+
+export const buttonSaveProfile = document.querySelector('#profile-btn');
+export const buttonSaveCard = document.querySelector('#card-btn');
+export const buttonSaveDel = document.querySelector('#delete-btn');
+export const buttonSaveAvatar = document.querySelector('#avatar-btn');
+
 
 export const nameInput = document.querySelector('#name-input');
 export const aboutInput = document.querySelector('#about-input');
