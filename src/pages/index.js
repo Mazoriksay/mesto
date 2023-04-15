@@ -139,7 +139,7 @@ function handleAvatarFormSubmit(data) {
 
 buttonAvatar.addEventListener('click', () => {
   popupAvatar.open();
-  cardForm.resetValidation();
+  avatarForm.resetValidation();
 });
 
 const profileForm = new FormValidate(classValid, document.querySelector('#profile-form'));

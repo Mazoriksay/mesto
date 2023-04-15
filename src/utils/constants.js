@@ -12,7 +12,7 @@ export const nameInput = document.querySelector('#name-input');
 export const aboutInput = document.querySelector('#about-input');
 
 export const placeInput = document.querySelector('#place-input');
-export const linkInput = document.querySelector('#link-input');
+export const linkInput = document.querySelector('#link-input-img');
 
 export const cardsContainerSelector = '.list';
 
