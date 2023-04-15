@@ -1,5 +1,5 @@
 export default class Card {
-  constructor(data, templateSelector, userId, handleCardClick, setLikeCount, deleteLikeCount, {handleDeleteCard}) {
+  constructor(data, templateSelector, userId, handleCardClick, {handleDeleteCard, handleSetLike, handleUnsetLike}) {
     this._name = data.name;
     this._link = data.link;
     this._cardId = data._id;
@@ -8,8 +8,8 @@ export default class Card {
     this._likes = data.likes;
     this._templateSelector = templateSelector;
     this._handleCardClick = handleCardClick;
-    this._setLikeCount = setLikeCount;
-    this._deleteLikeCount = deleteLikeCount;
+    this._handleSetLike = handleSetLike;
+    this._handleUnsetLike =  handleUnsetLike;
     this._handleDeleteCard = handleDeleteCard;
 
   }
@@ -26,21 +26,9 @@ export default class Card {
   
   _toggleLike() {
     if (!this._likeButton.classList.contains('list__like_active')) {
-      this._setLikeCount(this._cardId)
-        .then((res) => {
-          this._likes = res.likes;
-          this._likeCounts.textContent = this._likes.length;
-          this._setLikeButtonActive()
-        })
-        .catch((err) => console.log(err));
+      this._handleSetLike(this._likeCounts);
     } else {
-      this._deleteLikeCount(this._cardId)
-        .then((res) => { 
-          this._likes = res.likes;
-          this._likeCounts.textContent = this._likes.length;
-          this._unsetLikeButtonActive();
-        })
-        .catch((err) => console.log(err));
+      this._handleUnsetLike(this._likeCounts);
     }
   }
 
@@ -88,24 +76,20 @@ export default class Card {
     this._element.remove();
   }
 
-  // _getCardId() {
-  //   return this._cardId();
-  // }
-
   _setLikes(){
     if (this._likes.some(item => item._id === this._userId)) {
-      this._setLikeButtonActive();
+      this.setLikeButtonActive();
     } else {
-      this._unsetLikeButtonActive();
+      this.unsetLikeButtonActive();
     };
   }
 
 
-  _setLikeButtonActive() {
+  setLikeButtonActive() {
     this._likeButton.classList.add('list__like_active');
   }
 
-  _unsetLikeButtonActive() {
+  unsetLikeButtonActive() {
     this._likeButton.classList.remove('list__like_active');
   }
 }

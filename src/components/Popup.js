@@ -1,6 +1,7 @@
 export default class Popup {
     constructor(popupSelector) {
         this._popupElement = document.querySelector(popupSelector);
+        this._popupSubmitBtn = this._popupElement.querySelector('.popup__button-save');
         this._handleEscClose = this._handleEscClose.bind(this);
         this._closePopupOverlay = this._closePopupOverlay.bind(this);
         this._closePopupBtn = this._closePopupBtn.bind(this);
@@ -14,6 +15,14 @@ export default class Popup {
     close() {
         this._popupElement.classList.remove('popup_opened');
         document.removeEventListener('keydown', this._handleEscClose);
+    }
+
+    setSpinner() {
+        this._popupSubmitBtn.value = 'Сохранение...';
+    }
+
+    unsetSpinner(text) {
+        this._popupSubmitBtn.value = text;
     }
 
     _handleEscClose(evt) {
