@@ -83,11 +83,11 @@ function createCard(item) {
         .finally(() => popupDelete.unsetSpinner('Да'));
     })
   },
-  handleSetLike: (likeCounter) => {
+  handleSetLike: (likeCounter, likes) => {
     setLikeCount(item._id)
       .then((res) => {
-          item.likes = res.likes;
-          likeCounter.textContent = item.likes.length;
+          likes = res.likes;
+          likeCounter.textContent = likes.length;
           card.setLikeButtonActive();
       })
       .catch((err) => console.log(err));

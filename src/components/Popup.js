@@ -16,14 +16,6 @@ export default class Popup {
         document.removeEventListener('keydown', this._handleEscClose);
     }
 
-    setSpinner() {
-        this._popupSubmitBtn.value = 'Сохранение...';
-    }
-
-    unsetSpinner(text) {
-        this._popupSubmitBtn.value = text;
-    }
-
     _handleEscClose(evt) {
         if (evt.key === 'Escape') {
             this.close();
