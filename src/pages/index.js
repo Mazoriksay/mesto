@@ -83,20 +83,18 @@ function createCard(item) {
         .finally(() => popupDelete.unsetSpinner('Да'));
     })
   },
-  handleSetLike: (likeCounter, likes) => {
-    setLikeCount(item._id)
+  handleSetLike: (id) => {
+    setLikeCount(id)
       .then((res) => {
-          likes = res.likes;
-          likeCounter.textContent = likes.length;
+          card.setLikeCounter(res);
           card.setLikeButtonActive();
       })
       .catch((err) => console.log(err));
   },
-  handleUnsetLike: (likeCounter, likes) => {
-    deleteLikeCount(item._id)
+  handleUnsetLike: (id) => {
+    deleteLikeCount(id)
       .then((res) => {
-        likes = res.likes;
-        likeCounter.textContent = likes.length;
+        card.setLikeCounter(res);
         card.unsetLikeButtonActive();
       })
       .catch((err) => console.log(err));

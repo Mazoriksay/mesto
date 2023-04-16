@@ -26,9 +26,9 @@ export default class Card {
   
   _toggleLike() {
     if (!this._likeButton.classList.contains('list__like_active')) {
-      this._handleSetLike(this._likeCounts, this._likes);
+      this._handleSetLike(this._cardId);
     } else {
-      this._handleUnsetLike(this._likeCounts, this._likes);
+      this._handleUnsetLike(this._cardId);
     }
   }
 
@@ -74,6 +74,11 @@ export default class Card {
 
   removeCard(){
     this._element.remove();
+  }
+
+  setLikeCounter(item) {
+    this._likes = item.likes;
+    this._likeCounts.textContent = this._likes.length;
   }
 
   _setLikes(){
