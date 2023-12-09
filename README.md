@@ -32,3 +32,6 @@
 - ООП (инкапсуляция, наследование, полиморфизм),
 - сборка проекта с помощью Webpack,
 - работа с API.
+
+##GitHubPages
+- https://mazoriksay.github.io/mesto/
