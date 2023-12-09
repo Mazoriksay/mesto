@@ -33,5 +33,5 @@
 - сборка проекта с помощью Webpack,
 - работа с API.
 
-##GitHubPages
+## GitHubPages
 - https://mazoriksay.github.io/mesto/
